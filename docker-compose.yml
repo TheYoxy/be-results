@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  postgres:
+    restart: unless-stopped
+    image: postgres:alpine
+    environment:
+      - POSTGRES_USER=dev
+      - POSTGRES_PASSWORD=T8Dqzk53vqKYLTmE
+      - POSTGRES_DB=be-results
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    ports:
+      - 5431:5432
+    volumes:
+      - Sql:/var/lib/postgresql
+    cap_add:
+      - SYS_PTRACE
+    user: root
+    container_name: be-result-db
+
+volumes:
+  Sql:
